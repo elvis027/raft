@@ -487,8 +487,8 @@ func (r *Raft) handleAppendEntriesResult(result *appendEntriesResult) {
 	entries := result.req.GetEntries()
 
 	if !result.GetSuccess() {
-		// TODO: (B.7) - if AppendEntries fails because of log inconsistency: decrement nextIndex and retry
-		// Hint: use `setNextAndMatchIndex` to decrement nextIndex
+		// TODO: (B.7) - if AppendEntries fails because of log inconsistency: decrease nextIndex and retry
+		// Hint: use `setNextAndMatchIndex` to decrease nextIndex
 		// Log: logger.Info("append entries failed, decrease next index", zap.Uint64("nextIndex", nextIndex), zap.Uint64("matchIndex", matchIndex))
 		nextIndex := r.nextIndex[peerId] - 1
 		matchIndex := r.matchIndex[peerId]
